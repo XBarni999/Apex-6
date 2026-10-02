@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>Apex-6</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <GameDir Condition="'$(GameDir)' == ''">$(NUCLEAR_OPTION_DIR)</GameDir>
+  </PropertyGroup>
+  <Target Name="CheckGameDir" BeforeTargets="ResolveReferences" Condition="'$(GameDir)' == ''">
+    <Error Text="Set GameDir to your Nuclear Option folder, or set NUCLEAR_OPTION_DIR." />
+  </Target>
+  <ItemGroup>
+    <Reference Include="BepInEx"><HintPath>$(GameDir)/BepInEx/core/BepInEx.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(GameDir)/BepInEx/core/0Harmony.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(GameDir)/NuclearOption_Data/Managed/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="netstandard"><HintPath>$(GameDir)/NuclearOption_Data/Managed/netstandard.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(GameDir)/NuclearOption_Data/Managed/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Mirage"><HintPath>$(GameDir)/NuclearOption_Data/Managed/Mirage.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameDir)/NuclearOption_Data/Managed/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <EmbeddedResource Include="Bundle/Apex-6.nobp" LogicalName="Apex6.Apex-6.nobp" />
+  </ItemGroup>
+</Project>
