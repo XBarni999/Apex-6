@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1708743906, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   id: 0
   criticalPart: 0
   parentUnit: {fileID: 114733206282342372}
@@ -337,7 +337,7 @@ MonoBehaviour:
   damageMaterial:
     threshold: 0
     renderers: []
-    indices: 
+    indices:
   damageEffects:
   - prefab: {fileID: 1709254077376921, guid: 2de6e39b51c9ba7458b1858f1fcf07f5, type: 3}
     threshold: 0
@@ -355,8 +355,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 576076454, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   attachedUnit: {fileID: 114733206282342372}
   targetAcquisitionMode: 4
   fireControl: {fileID: 3480781072169675374}
@@ -634,8 +634,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1486494890, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   attachedUnit: {fileID: 114733206282342372}
   info: {fileID: 11400000, guid: 17a6b2f1671c4bc4ea16d47d5b0f3620, type: 2}
   ammo: 6
@@ -671,8 +671,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1708743906, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   id: 0
   criticalPart: 0
   parentUnit: {fileID: 114733206282342372}
@@ -697,7 +697,7 @@ MonoBehaviour:
   damageMaterial:
     threshold: 0
     renderers: []
-    indices: 
+    indices:
   damageEffects:
   - prefab: {fileID: 1709254077376921, guid: 2de6e39b51c9ba7458b1858f1fcf07f5, type: 3}
     threshold: 0
@@ -3543,8 +3543,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 680085626, guid: 35c838180ffa3b627a4ee1e66ae78cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   SpawnSettings:
     SendPosition: 1
     SendRotation: 1
@@ -3566,14 +3566,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1012890734, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   SyncSettings:
     From: 2
     To: 3
     Timing: 0
     Interval: 0.1
-  MapUniqueName: 
+  MapUniqueName:
   MapHQ: {fileID: 0}
   MapAirbase: {fileID: 0}
   weaponStations: []
@@ -3636,8 +3636,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1708743906, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   id: 0
   criticalPart: 1
   parentUnit: {fileID: 114733206282342372}
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   damageMaterial:
     threshold: 0
     renderers: []
-    indices: 
+    indices:
   damageEffects:
   - prefab: {fileID: 1709254077376921, guid: d8bfdb32519e3a64f963212c2056f76f, type: 3}
     threshold: 0
@@ -3680,8 +3680,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1761350240, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   attachedUnit: {fileID: 114733206282342372}
   scanner: {fileID: 4841364053301648}
   part: {fileID: 0}
@@ -3970,8 +3970,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 663991296, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   SyncSettings:
     From: 2
     To: 3
@@ -3989,8 +3989,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1352390588, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   SyncSettings:
     From: 2
     To: 3
@@ -4006,8 +4006,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1210354870, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   gLimit: 100
 --- !u!64 &64220653531496868
 MeshCollider:
@@ -4041,8 +4041,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -363700317, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   targetAcquisitionMode: 3
   targetAssessmentInterval: 1
   salvoInterval: 1.25

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 1038227444, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
   m_Name: Def_Apex6_Ground
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   typeIdentity:
     surface: 0
     air: 0.14

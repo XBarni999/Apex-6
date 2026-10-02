@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c39d0b3dbc2446349568e124e8619bff, type: 3}
   m_Name: Op_Apex6_Aircraft
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   weaponJsonKey: Apex6_AirRail
   aircraft:
   - aircraftJsonKey: CAS1
@@ -52,4 +52,3 @@ MonoBehaviour:
     hardpointIndices: 020000000300000004000000
   - aircraftJsonKey: Aryx_Interceptor1
     hardpointIndices: 010000000500000006000000
-

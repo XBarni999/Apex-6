@@ -1,0 +1,6 @@
+* text=auto
+*.dll binary
+*.nobp binary
+*.fbx binary
+*.png binary
+*.blend binary

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 552909734, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
   m_Name: WM_Apex6_AirRail
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   prefab: {fileID: 1709254077376921, guid: 9b5584bab9e19cc4db5108d8a6ca8a5c, type: 3}
   jsonKey: Apex6_AirRail
   info: {fileID: 11400000, guid: 90533f06d9b980e4a8bfbce200447eed, type: 2}
@@ -40,4 +40,3 @@ MonoBehaviour:
   disabled: 0
   isEventContent: 0
   dontAutomaticallyAddToEncyclopedia: 0
-
