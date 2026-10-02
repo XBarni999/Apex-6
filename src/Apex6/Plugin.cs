@@ -6,19 +6,45 @@ using UnityEngine;
 
 namespace Apex6AmmoVisuals
 {
-    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.0.0")]
+    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.0.1")]
     [BepInDependency("com.nikkorap.blueprinter", "2.0.1")]
     public sealed class Plugin : BaseUnityPlugin
     {
         private Harmony harmony;
+        private float nextRangeRefresh;
+        internal const float EngagementRange = 137000f;
         private void Awake()
         {
             harmony = new Harmony("ua.ncmod.apex6.ammo-visuals");
             harmony.Patch(AccessTools.Method(typeof(MissileLauncher), "OnEnable"),
                 postfix: new HarmonyMethod(typeof(Plugin), nameof(Attach)));
+            harmony.Patch(AccessTools.Method(typeof(Missile), "CalcRange"),
+                postfix: new HarmonyMethod(typeof(Plugin), nameof(LimitRange)));
+            RefreshWeaponRanges();
             // Also cover a launcher already loaded when the plugin is enabled.
             foreach (var launcher in FindObjectsOfType<MissileLauncher>()) Attach(launcher);
             Logger.LogInfo("Apex-6 six-rail ammunition visuals enabled.");
+        }
+        private void Update()
+        {
+            if (Time.unscaledTime < nextRangeRefresh) return;
+            nextRangeRefresh = Time.unscaledTime + 2f;
+            RefreshWeaponRanges();
+        }
+        private static void RefreshWeaponRanges()
+        {
+            // Includes definitions loaded by Blueprinter after this plugin's Awake.
+            foreach (var info in Resources.FindObjectsOfTypeAll<WeaponInfo>())
+                if (info.name == "WI_Apex6_Air" || info.name == "WI_Apex6_Ground")
+                    info.targetRequirements.maxRange = EngagementRange;
+        }
+        private static void LimitRange(Missile __instance, ref float __result, ref float noEscapeDistance)
+        {
+            var info = __instance == null ? null : __instance.GetWeaponInfo();
+            if (info == null || (info.name != "WI_Apex6_Air" && info.name != "WI_Apex6_Ground")) return;
+            // Preserve shorter native estimates, but never advertise beyond the mission envelope.
+            __result = Mathf.Min(__result, EngagementRange);
+            noEscapeDistance = Mathf.Min(noEscapeDistance, __result);
         }
         private static void Attach(MissileLauncher __instance)
         {

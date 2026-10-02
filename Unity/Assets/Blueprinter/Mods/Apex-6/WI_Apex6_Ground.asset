@@ -24,7 +24,7 @@ MonoBehaviour:
     minAltitude: 0
     maxAltitude: 5000
     minRange: 500
-    maxRange: 135000
+    maxRange: 137000
     maxSpeed: 100
     minIR: 0
     minRadar: 0

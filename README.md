@@ -2,7 +2,7 @@
 
 A low-observable jet-powered attack drone for **Nuclear Option 0.34.2**, featuring optical guidance, terrain-following flight, and aircraft or six-rail ground launch.
 
-- Launch range: **135 km**; target cruise speed: **670 km/h**.
+- Launch range: **137 km**; target cruise speed: **670 km/h**.
 - Warhead: **38 kg**; cost: **$550,000** per drone.
 - Ground launcher: a one-second detachable solid-fuel booster and sequential launches. Loaded drones disappear after launch and return when rearmed.
 - Aircraft: one drone per rail, supporting **10 vanilla and 9 modded aircraft**. [Aircraft and hardpoints](AIRCRAFT_COMPATIBILITY.md).
