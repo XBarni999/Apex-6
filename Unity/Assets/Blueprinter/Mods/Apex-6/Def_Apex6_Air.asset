@@ -26,8 +26,8 @@ MonoBehaviour:
   jsonKey: Apex6_Air
   unitName: Apex-6
   bogeyName: DRONE
-  description: Jet-powered low-observable one-way attack drone. 670 km/h cruise;
-    20 m terrain-following; 38 kg warhead.
+  description: Air-launched low-observable jet attack drone. Up to 1050 km/h; 20
+    m terrain-following; 68 kg warhead.
   code: APX-6
   visibleRange: 1200
   iconRange: 0
@@ -42,11 +42,11 @@ MonoBehaviour:
   captureCapacity: 0
   captureStrength: 0
   captureDefense: 0
-  length: 1.72
-  width: 1.72
-  height: 0.29
-  value: 0.55
-  mass: 180
+  length: 2.66
+  width: 2.74
+  height: 0.48
+  value: 1
+  mass: 260
   manpower: 0
   armorTier: 0.1
   damageTolerance: 0

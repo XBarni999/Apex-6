@@ -34,21 +34,21 @@ MonoBehaviour:
   pK: 0.02
   weaponName: Apex-6
   shortName: APX-6
-  description: Low-altitude jet attack drone; 38 kg shaped-charge/HE warhead. Selected
-    surface target required.
+  description: Air-launched low-observable jet attack drone; 68 kg shaped-charge/HE
+    warhead. Selected surface target required.
   fireInterval: 1.25
   muzzleVelocity: 0
-  maxSpeed: 186.11111
+  maxSpeed: 291.6667
   dragCoef: 0.3
   gravMult: 1
-  pierceDamage: 250
-  blastDamage: 38
+  pierceDamage: 350
+  blastDamage: 68
   weaponIcon: {fileID: 21300000, guid: 404037cbcb409f146985045f9eefdee8, type: 2}
   armorTierEffectiveness: 9
   airburstHeight: 0
   visibilityWhenFired: 0
-  costPerRound: 0.55
-  massPerRound: 180
+  costPerRound: 1
+  massPerRound: 260
   useWeaponDoors: 1
   boresight: 0
   laserGuided: 0

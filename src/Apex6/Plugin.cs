@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Reflection;
 using BepInEx;
 using HarmonyLib;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Apex6AmmoVisuals
 {
-    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.0.1")]
+    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.1.0")]
     [BepInDependency("com.nikkorap.blueprinter", "2.0.1")]
     public sealed class Plugin : BaseUnityPlugin
     {
@@ -20,6 +21,8 @@ namespace Apex6AmmoVisuals
                 postfix: new HarmonyMethod(typeof(Plugin), nameof(Attach)));
             harmony.Patch(AccessTools.Method(typeof(Missile), "CalcRange"),
                 postfix: new HarmonyMethod(typeof(Plugin), nameof(LimitRange)));
+            harmony.Patch(AccessTools.Method(typeof(Missile), "StartMissile"),
+                postfix: new HarmonyMethod(typeof(Plugin), nameof(DeployAirWings)));
             RefreshWeaponRanges();
             // Also cover a launcher already loaded when the plugin is enabled.
             foreach (var launcher in FindObjectsOfType<MissileLauncher>()) Attach(launcher);
@@ -45,6 +48,20 @@ namespace Apex6AmmoVisuals
             // Preserve shorter native estimates, but never advertise beyond the mission envelope.
             __result = Mathf.Min(__result, EngagementRange);
             noEscapeDistance = Mathf.Min(noEscapeDistance, __result);
+        }
+        private static void DeployAirWings(Missile __instance)
+        {
+            var info = __instance == null ? null : __instance.GetWeaponInfo();
+            if (info == null || info.name != "WI_Apex6_Air") return;
+            var model = __instance.transform.Find("Apex6_Visual/Apex6_Air");
+            var animation = model == null ? null : model.GetComponent<Animation>();
+            if (animation == null || animation.clip == null) return;
+            __instance.StartCoroutine(PlayAfterSeparation(animation));
+        }
+        private static IEnumerator PlayAfterSeparation(Animation animation)
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (animation != null) animation.Play();
         }
         private static void Attach(MissileLauncher __instance)
         {

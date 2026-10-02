@@ -32,7 +32,7 @@ MonoBehaviour:
   GunAmmo: 0
   emptyCost: 0
   emptyMass: 20
-  mass: 200
+  mass: 280
   drag: 0.04
   emptyDrag: 0.01
   RCS: 0.01

@@ -16,6 +16,7 @@
     <Reference Include="UnityEngine"><HintPath>$(GameDir)/NuclearOption_Data/Managed/UnityEngine.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="Mirage"><HintPath>$(GameDir)/NuclearOption_Data/Managed/Mirage.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameDir)/NuclearOption_Data/Managed/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.AnimationModule"><HintPath>$(GameDir)/NuclearOption_Data/Managed/UnityEngine.AnimationModule.dll</HintPath><Private>false</Private></Reference>
     <EmbeddedResource Include="Bundle/Apex-6.nobp" LogicalName="Apex6.Apex-6.nobp" />
   </ItemGroup>
 </Project>
