@@ -1,8 +1,8 @@
-# Apex-6: сумісність із літаками
+# Apex-6: aircraft compatibility
 
-Індекси нижче — групи hardpointSets, відлік із нуля. Перевірено за встановленими ресурсами; фактичні зазори й вихід із відсіків потребують перевірки в грі.
+Indices refer to zero-based hardpointSets groups. Verified against installed assets; physical clearance and weapon-bay separation still require in-game testing.
 
-| Літак | jsonKey | Індекси | Групи |
+| Aircraft | jsonKey | Indices | Groups |
 |---|---|---|---|
 | A-19 Brawler | CAS1 | 2, 3, 4, 5, 6, 7 | Inner Fuselage Pylons; Outer Fuselage Pylons; Inner Wing Pylons; Middle Wing Pylons; Outer Left Wing Pylon; Outer Right Wing Pylon |
 | CI-22 Cricket | COIN | 2, 3 | Fuselage Pylons; Inner Wing Pylons |
@@ -24,4 +24,4 @@
 | F-99 Shrike | Aryx_LightFighter1 | 2, 3, 4 | Inner Wing Pylons; Outer Wing Pylons; Centreline Pylon |
 | FS-41 Eclipse | Aryx_Interceptor1 | 1, 5, 6 | Centreline Pylon; Wing Glove Pylons; Wing Pylons |
 
-Гелікоптери, Tarantula та MC-260 Chimera виключені. Не використані гармати, гаки, TGP, радоми та вузькі кінцеві пілони. У Ternion використано зовнішні групи 4–8. Відсутній модовий літак пропускається Blueprinter із попередженням, а не блокує інші літаки.
+Helicopters, Tarantula, and MC-260 Chimera are excluded. Gun mounts, tail hooks, targeting pods, radomes, and narrow wingtip pylons are not used. Ternion uses external groups 4–8. Blueprinter skips missing modded aircraft with a warning without blocking other aircraft.
