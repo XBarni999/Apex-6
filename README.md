@@ -1,13 +1,17 @@
 # Apex-6
 
-A low-observable jet-powered attack drone for **Nuclear Option 0.34.2**, featuring optical guidance, terrain-following flight, and aircraft or six-rail ground launch.
+A family of low-observable jet-powered attack drones for **Nuclear Option 0.34.2**, featuring optical guidance, terrain-following flight, aircraft launch, ground launchers, and parachute-deployed cargo pallets.
 
 - Launch range: **137 km** for both variants. Ground target cruise speed: **670 km/h**; aircraft variant target maximum: **about 1050 km/h**.
-- Ground drone: **38 kg** warhead, **$550,000**. Aircraft drone: **68 kg** warhead, **$1,000,000**.
+- **Apex-6** is the smaller drone: **38 kg** warhead, **$550,000**. **Apex-8** is the larger drone: **68 kg** warhead, **$1,000,000**.
+- Cargo options: **8 × Apex-6** or **4 × Apex-8**, supported on compatible QuadVTOL1 and UtilityHelo1 cargo stations. Pallets use the native shared cargo selection; mixed payloads may display the first pallet type's name.
+- Ground options: the original **6 × Apex-6 TEL** and a separate **4 × Apex-8 TEL**.
 - Ground launcher: a one-second detachable solid-fuel booster and sequential launches. Loaded drones disappear after launch and return when rearmed.
 - Aircraft: a separate larger drone on its own upper pylon frame; its wings unfold after launch. One drone per rail, supporting **10 vanilla and 9 modded aircraft**. [Aircraft and hardpoints](AIRCRAFT_COMPATIBILITY.md).
 
 ## Installation
+
+Pallets descend under a parachute, wait seven seconds after ramp exit, then release one drone every 0.8 seconds. Drones eject upward at 35 degrees and 55 m/s, receive the selected targets, and retain the aircraft's damage credit. Empty frames disappear one second after landing; cleanup waits for any remaining drone releases.
 
 Requires **BepInEx 5** and **Blueprinter 2.0.1+**.
 
@@ -27,4 +31,4 @@ This is original mod lore, not official canon. Faction background: [PALA](https:
 
 Build the DLL with `dotnet build src/Apex6/Apex-6.csproj -c Release -p:GameDir="path to Nuclear Option"`. After editing Unity assets, build a new `.nobp` and replace `src/Apex6/Bundle/Apex-6.nobp` before rebuilding the DLL.
 
-Ground and aircraft launches were tested by the user. The combined package passed build and embedded-resource hash checks; the single-file DLL has not yet been tested in-game.
+The user tested ground and aircraft launches, pallet operation, and the revised upward launch behavior. The package passed Release compilation, Unity material checks, and embedded-resource hash verification. The final visual update and multiplayer behavior have not yet been verified in-game. See [CHANGELOG.md](CHANGELOG.md) for release details.

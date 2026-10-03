@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1038227444, guid: 06dd3d5416bf43ea368cc39ff96e6d5a, type: 3}
-  m_Name: Def_Apex6_Air
+  m_Name: Def_Apex8_Ground
   m_EditorClassIdentifier:
   typeIdentity:
     surface: 0
@@ -23,11 +23,10 @@ MonoBehaviour:
     antiAir: 0
     antiMissile: 0
     antiRadar: 1
-  jsonKey: Apex6_Air
-  unitName: Apex-6
+  jsonKey: Apex8_Ground
+  unitName: Apex-8
   bogeyName: DRONE
-  description: Air-launched low-observable jet attack drone. Up to 1050 km/h; 20
-    m terrain-following; 68 kg warhead.
+  description: Larger Apex-8 drone with a one-second detachable ground-launch booster.
   code: APX-6
   visibleRange: 1200
   iconRange: 0
@@ -51,7 +50,8 @@ MonoBehaviour:
   armorTier: 0.1
   damageTolerance: 0
   CanSlingLoad: 0
-  unitPrefab: {fileID: 1709254077376921, guid: 55b49fca625b710459140202c517ae98, type: 3}
+  unitPrefab: {fileID: 4304056533916219830, guid: 8a004028df8c03741ac13d2d635f1a01,
+    type: 3}
   spawnOffset: {x: 0, y: 0, z: 0}
   disabled: 0
   isEventContent: 0

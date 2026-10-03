@@ -3,7 +3,27 @@ guid: 21e2799c94124054869bc637d37a9581
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_AirDrone_CopperEngine
+    second: {fileID: 2100000, guid: c275bb330a124c61874c6f7d931bedcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_AirDrone_StealthHull
+    second: {fileID: 2100000, guid: 2d31906e9d5d4f6285614142598cdfca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_AirDrone_TemperedNozzle
+    second: {fileID: 2100000, guid: 78aad8ee662147dc9812fc182a0f24c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_AirDrone_TurbineFace
+    second: {fileID: 2100000, guid: e7646f31512d4cd09cd3e03151500e75, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -71,7 +91,7 @@ ModelImporter:
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0

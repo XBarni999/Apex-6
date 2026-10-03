@@ -32,8 +32,8 @@ MonoBehaviour:
     minOwnerSpeed: 0
     minValue: 0
   pK: 0.02
-  weaponName: Apex-6
-  shortName: APX-6
+  weaponName: Apex-8
+  shortName: APX-8
   description: Air-launched low-observable jet attack drone; 68 kg shaped-charge/HE
     warhead. Selected surface target required.
   fireInterval: 1.25
@@ -43,7 +43,7 @@ MonoBehaviour:
   gravMult: 1
   pierceDamage: 350
   blastDamage: 68
-  weaponIcon: {fileID: 21300000, guid: 404037cbcb409f146985045f9eefdee8, type: 2}
+  weaponIcon: {fileID: 21300000, guid: 514a7d5ede86ab14baf4ef59ba910418, type: 3}
   armorTierEffectiveness: 9
   airburstHeight: 0
   visibilityWhenFired: 0

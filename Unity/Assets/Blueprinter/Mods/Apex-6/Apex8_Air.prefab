@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 4901182538550442169}
   - component: {fileID: 411570007652522222}
   m_Layer: 0
-  m_Name: Apex6_Air
+  m_Name: Apex8_Air
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
     SendName: 0
     SendActive: 2
   _sceneId: 0
-  _prefabHash: 2087595909
+  _prefabHash: -117823453
   ServerObjectManager: {fileID: 0}
   ClientObjectManager: {fileID: 0}
   _hasSpawned: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
     burnTime: 560
     fuelMass: 75
     topSpeed: 299792450
-    IR_intensity: 0.035
+    IR_intensity: 0.055
     particleSystems:
     - {fileID: 1436480629580903309}
     trailEmitters: []
@@ -3639,6 +3639,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6757224130794661886, guid: 21e2799c94124054869bc637d37a9581,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757224130794661886, guid: 21e2799c94124054869bc637d37a9581,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757224130794661886, guid: 21e2799c94124054869bc637d37a9581,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757224130794661886, guid: 21e2799c94124054869bc637d37a9581,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3650,6 +3665,11 @@ PrefabInstance:
     - target: {fileID: 6757224130794661886, guid: 21e2799c94124054869bc637d37a9581,
         type: 3}
       propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6757224130794661886, guid: 21e2799c94124054869bc637d37a9581,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

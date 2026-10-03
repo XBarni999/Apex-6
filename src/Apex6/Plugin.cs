@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Apex6AmmoVisuals
 {
-    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.1.0")]
+    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.2.0")]
     [BepInDependency("com.nikkorap.blueprinter", "2.0.1")]
     public sealed class Plugin : BaseUnityPlugin
     {
@@ -23,6 +23,7 @@ namespace Apex6AmmoVisuals
                 postfix: new HarmonyMethod(typeof(Plugin), nameof(LimitRange)));
             harmony.Patch(AccessTools.Method(typeof(Missile), "StartMissile"),
                 postfix: new HarmonyMethod(typeof(Plugin), nameof(DeployAirWings)));
+            PalletHooks.Install(harmony);
             RefreshWeaponRanges();
             // Also cover a launcher already loaded when the plugin is enabled.
             foreach (var launcher in FindObjectsOfType<MissileLauncher>()) Attach(launcher);
@@ -38,13 +39,21 @@ namespace Apex6AmmoVisuals
         {
             // Includes definitions loaded by Blueprinter after this plugin's Awake.
             foreach (var info in Resources.FindObjectsOfTypeAll<WeaponInfo>())
-                if (info.name == "WI_Apex6_Air" || info.name == "WI_Apex6_Ground")
+                if (IsDroneInfo(info))
+                {
                     info.targetRequirements.maxRange = EngagementRange;
+                    if (info.name == "WI_Apex6_Air") { info.weaponName = "Apex-8"; info.shortName = "APX-8"; }
+                }
+            foreach (var mount in Resources.FindObjectsOfTypeAll<WeaponMount>())
+                if (mount.jsonKey == "Apex6_AirRail") mount.mountName = "Apex-8 Single Rail";
         }
+        private static bool IsDroneInfo(WeaponInfo info) => info != null &&
+            (info.name == "WI_Apex6_Air" || info.name == "WI_Apex6_Ground" ||
+             info.name == "WI_Apex8_Ground" || info.name == "WI_Apex6_PalletDrone");
         private static void LimitRange(Missile __instance, ref float __result, ref float noEscapeDistance)
         {
             var info = __instance == null ? null : __instance.GetWeaponInfo();
-            if (info == null || (info.name != "WI_Apex6_Air" && info.name != "WI_Apex6_Ground")) return;
+            if (!IsDroneInfo(info)) return;
             // Preserve shorter native estimates, but never advertise beyond the mission envelope.
             __result = Mathf.Min(__result, EngagementRange);
             noEscapeDistance = Mathf.Min(noEscapeDistance, __result);
@@ -52,9 +61,9 @@ namespace Apex6AmmoVisuals
         private static void DeployAirWings(Missile __instance)
         {
             var info = __instance == null ? null : __instance.GetWeaponInfo();
-            if (info == null || info.name != "WI_Apex6_Air") return;
-            var model = __instance.transform.Find("Apex6_Visual/Apex6_Air");
-            var animation = model == null ? null : model.GetComponent<Animation>();
+            if (info == null || (info.name != "WI_Apex6_Air" && info.name != "WI_Apex8_Ground")) return;
+            var model = __instance.transform.Find("Apex6_Visual");
+            var animation = model == null ? null : model.GetComponentInChildren<Animation>();
             if (animation == null || animation.clip == null) return;
             __instance.StartCoroutine(PlayAfterSeparation(animation));
         }
@@ -66,7 +75,7 @@ namespace Apex6AmmoVisuals
         private static void Attach(MissileLauncher __instance)
         {
             if (__instance == null || __instance.missile == null ||
-                __instance.missile.jsonKey != "Apex6_Ground") return;
+                (__instance.missile.jsonKey != "Apex6_Ground" && __instance.missile.jsonKey != "Apex8_Ground")) return;
             var view = __instance.GetComponent<RailAmmoView>();
             if (view == null) view = __instance.gameObject.AddComponent<RailAmmoView>();
             view.Bind(__instance);
@@ -80,10 +89,11 @@ namespace Apex6AmmoVisuals
     {
         private static readonly FieldInfo Cell = AccessTools.Field(typeof(MissileLauncher), "currentCell");
         private MissileLauncher launcher;
-        private readonly GameObject[] models = new GameObject[6];
+        private GameObject[] models;
         public void Bind(MissileLauncher value)
         {
             launcher = value;
+            models = new GameObject[value.missile.jsonKey == "Apex8_Ground" ? 4 : 6];
             var unit = launcher.GetComponentInParent<GroundVehicle>();
             if (unit == null) { enabled = false; return; }
             foreach (var t in unit.GetComponentsInChildren<Transform>(true))
@@ -91,7 +101,7 @@ namespace Apex6AmmoVisuals
                 const string prefix = "LoadedDrone_";
                 int index;
                 if (t.name.StartsWith(prefix, StringComparison.Ordinal) &&
-                    int.TryParse(t.name.Substring(prefix.Length), out index) && index >= 1 && index <= 6)
+                    int.TryParse(t.name.Substring(prefix.Length), out index) && index >= 1 && index <= models.Length)
                     models[index - 1] = t.gameObject;
             }
             enabled = true;
@@ -100,11 +110,12 @@ namespace Apex6AmmoVisuals
         private void LateUpdate()
         {
             if (launcher == null || Cell == null) return;
-            int next = ((int)Cell.GetValue(launcher) % 6 + 6) % 6;
-            int ammo = Mathf.Clamp(launcher.ammo, 0, 6);
-            for (int i = 0; i < 6; i++)
+            int count = models.Length;
+            int next = ((int)Cell.GetValue(launcher) % count + count) % count;
+            int ammo = Mathf.Clamp(launcher.ammo, 0, count);
+            for (int i = 0; i < count; i++)
             {
-                bool loaded = (i - next + 6) % 6 < ammo;
+                bool loaded = (i - next + count) % count < ammo;
                 if (models[i] != null && models[i].activeSelf != loaded) models[i].SetActive(loaded);
             }
         }
