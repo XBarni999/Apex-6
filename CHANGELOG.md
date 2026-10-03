@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 — 2026-10-03
+
+- Removed both drone cargo pallets from UH-90 Ibis.
+- Added both pallet variants to the MC-260 Chimera's rear and front cargo bays (hardpoint groups 1 and 2). Requires the MC-260 Chimera mod.
+- Preserved cargo pallet support on VL-49 Tarantula and the existing shared cargo release behavior.
+
+Validation: checked the installed MC-260 Chimera 1.2.0 definition, both cargo groups, and its native cargo ramp in Unity. Rebuilt the Blueprinter bundle and Release DLL and verified the embedded bundle hash. Chimera pallet placement and release still require an in-game test.
+
 ## 1.2.0 — 2026-10-03
 
 - Named the smaller drone Apex-6 and the larger drone Apex-8. Existing aircraft identifiers remain compatible with earlier loadouts.

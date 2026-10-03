@@ -23,6 +23,13 @@ public static class Apex6PalletSetup
     static void CheckRequest()
     {
         if (EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlayingOrWillChangePlaymode) return;
+        if(File.Exists(R+"Tools~/cargo-carriers.request"))
+        {
+            File.Delete(R+"Tools~/cargo-carriers.request");
+            try{UpdateCargoCarriers();File.WriteAllText(R+"Tools~/cargo-carriers.result","APEX_CARGO_CARRIERS_OK");}
+            catch(Exception ex){File.WriteAllText(R+"Tools~/cargo-carriers.result",ex.ToString());Debug.LogException(ex);}
+            return;
+        }
         if (File.Exists(R+"Tools~/visual-repair.request"))
         {
             File.Delete(R+"Tools~/visual-repair.request");
@@ -44,8 +51,8 @@ public static class Apex6PalletSetup
             try
             {
                 const string output=R+"Delivery~/Swarm";
-                Blueprinter.ModBuilder.Build("Apex-6","Apex-6","1.2.0",output);
-                string bundle=output+"/Apex-6_1.2.0.nobp";
+                Blueprinter.ModBuilder.Build("Apex-6","Apex-6","1.2.1",output);
+                string bundle=output+"/Apex-6_1.2.1.nobp";
                 if(!File.Exists(bundle))throw new Exception("Pallet bundle not produced");
                 File.Copy(bundle,R+"Tools~/Runtime/Apex6AmmoVisuals/Bundle/Apex-6.nobp",true);
                 File.WriteAllText(R+"Tools~/pallet-package.result","APEX_SWARM_BUNDLE_OK "+new FileInfo(bundle).Length);
@@ -194,6 +201,7 @@ public static class Apex6PalletSetup
         foreach(var guid in AssetDatabase.FindAssets("t:AircraftDefinition",new[]{D+"MonoBehaviour"}))
         {
             var def=Load<AircraftDefinition>(AssetDatabase.GUIDToAssetPath(guid));
+            if(def.jsonKey!="QuadVTOL1")continue;
             if(def.unitPrefab==null)continue;
             if(def.unitPrefab.GetComponentInChildren<CargoRamp>(true)==null)continue;
             var manager=def.unitPrefab.GetComponentInChildren<WeaponManager>(true);
@@ -206,6 +214,7 @@ public static class Apex6PalletSetup
             if(indices.Length>0)entries.Add(Tuple.Create(def.jsonKey,indices));
         }
         if(entries.Count==0)throw new Exception("No aircraft cargo stations found for native pallet donor");
+        entries.Add(Tuple.Create("Aryx_CargoPlane1",new[]{1,2}));
         var op=Copy<ScriptableObject>(R+"Op_Apex6_Aircraft.asset","Op_"+PalletName);
         Edit(op,s=>{
             P(s,"weaponJsonKey").stringValue=PalletName+"Mount";
@@ -218,6 +227,48 @@ public static class Apex6PalletSetup
             }
         });
         File.WriteAllLines(R+"Tools~/"+PalletName+"-aircraft.txt",entries.Select(e=>e.Item1+": "+string.Join(",",e.Item2)));
+    }
+    static void UpdateCargoCarriers()
+    {
+        const string dll="F:/Games/Nuclear.Option.v0.34.1/BepInEx/plugins/com.nikkorap.blueprinter/addons/aryx.mc260/Aryx_MC260_Chimera_1.2.0.dll";
+        var assembly=System.Reflection.Assembly.Load(File.ReadAllBytes(dll));
+        bool found=false;
+        foreach(var resource in assembly.GetManifestResourceNames())
+        {
+            using(var stream=assembly.GetManifestResourceStream(resource))
+            using(var memory=new MemoryStream())
+            {
+                stream.CopyTo(memory);var data=memory.ToArray();
+                if(data.Length<8 || System.Text.Encoding.ASCII.GetString(data,0,7)!="UnityFS")continue;
+                var bundle=AssetBundle.LoadFromMemory(data);if(!bundle)continue;
+                try
+                {
+                    foreach(var aircraft in bundle.LoadAllAssets<AircraftDefinition>())
+                    {
+                        if(aircraft.jsonKey!="Aryx_CargoPlane1")continue;
+                        if(!aircraft.unitPrefab.GetComponentInChildren<CargoRamp>(true))throw new Exception("Chimera cargo ramp missing");
+                        var manager=aircraft.unitPrefab.GetComponentInChildren<WeaponManager>(true);
+                        var serialized=new SerializedObject(manager);var sets=P(serialized,"hardpointSets");
+                        var lines=new List<string>();
+                        foreach(int index in new[]{1,2})
+                        {
+                            if(index>=sets.arraySize)throw new Exception("Chimera cargo station missing");
+                            var set=sets.GetArrayElementAtIndex(index);var name=set.FindPropertyRelative("name").stringValue;
+                            if(!name.StartsWith("Cargo Bay"))throw new Exception("Unexpected Chimera station "+name);
+                            lines.Add("Aryx_CargoPlane1: "+index+" = "+name+"; native cargo ramp verified.");
+                        }
+                        File.WriteAllLines(R+"Validation~/cargo-carriers.txt",lines);found=true;
+                    }
+                }
+                finally{bundle.Unload(true);}
+            }
+        }
+        if(!found)throw new Exception("Installed MC-260 Chimera definition missing");
+        foreach(var name in new[]{"Apex6_Pallet8","Apex8_Pallet4"})
+        {
+            PalletName=name;Mass=name=="Apex6_Pallet8"?1640f:1240f;CreateCargoOperation();
+        }
+        AssetDatabase.SaveAssets();
     }
     public static void Validate()
     {

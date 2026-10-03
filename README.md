@@ -4,7 +4,7 @@ A family of low-observable jet-powered attack drones for **Nuclear Option 0.34.2
 
 - Launch range: **137 km** for both variants. Ground target cruise speed: **670 km/h**; aircraft variant target maximum: **about 1050 km/h**.
 - **Apex-6** is the smaller drone: **38 kg** warhead, **$550,000**. **Apex-8** is the larger drone: **68 kg** warhead, **$1,000,000**.
-- Cargo options: **8 × Apex-6** or **4 × Apex-8**, supported on compatible QuadVTOL1 and UtilityHelo1 cargo stations. Pallets use the native shared cargo selection; mixed payloads may display the first pallet type's name.
+- Cargo options: **8 × Apex-6** or **4 × Apex-8**, supported on **VL-49 Tarantula** and the **MC-260 Chimera** mod. Chimera uses its rear and front cargo bays (groups 1 and 2). UH-90 Ibis does not receive these pallets. Pallets use the native shared cargo selection; mixed payloads may display the first pallet type's name.
 - Ground options: the original **6 × Apex-6 TEL** and a separate **4 × Apex-8 TEL**.
 - Ground launcher: a one-second detachable solid-fuel booster and sequential launches. Loaded drones disappear after launch and return when rearmed.
 - Aircraft: a separate larger drone on its own upper pylon frame; its wings unfold after launch. One drone per rail, supporting **10 vanilla and 9 modded aircraft**. [Aircraft and hardpoints](AIRCRAFT_COMPATIBILITY.md).

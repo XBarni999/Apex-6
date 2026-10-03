@@ -16,5 +16,5 @@ MonoBehaviour:
   aircraft:
   - aircraftJsonKey: QuadVTOL1
     hardpointIndices: 000000000100000002000000
-  - aircraftJsonKey: UtilityHelo1
-    hardpointIndices: 030000000400000005000000
+  - aircraftJsonKey: Aryx_CargoPlane1
+    hardpointIndices: 0100000002000000

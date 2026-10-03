@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Apex6AmmoVisuals
 {
-    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.2.0")]
+    [BepInPlugin("ua.ncmod.apex6.ammo-visuals", "Apex-6", "1.2.1")]
     [BepInDependency("com.nikkorap.blueprinter", "2.0.1")]
     public sealed class Plugin : BaseUnityPlugin
     {

@@ -25,3 +25,13 @@ Indices refer to zero-based hardpointSets groups. Verified against installed ass
 | FS-41 Eclipse | Aryx_Interceptor1 | 1, 5, 6 | Centreline Pylon; Wing Glove Pylons; Wing Pylons |
 
 Helicopters, Tarantula, and MC-260 Chimera are excluded. Gun mounts, tail hooks, targeting pods, radomes, and narrow wingtip pylons are not used. Ternion uses external groups 4–8. Blueprinter skips missing modded aircraft with a warning without blocking other aircraft.
+# Cargo pallets
+
+Both the eight-drone Apex-6 pallet and the four-drone Apex-8 pallet are available on these carriers:
+
+| Aircraft | jsonKey | Cargo groups |
+| --- | --- | --- |
+| VL-49 Tarantula | `QuadVTOL1` | 0, 1, 2 |
+| MC-260 Chimera (mod required) | `Aryx_CargoPlane1` | 1: Cargo Bay Rear; 2: Cargo Bay Front |
+
+UH-90 Ibis is excluded from drone cargo pallet support. Chimera's groups and native ramp were checked against the installed Chimera 1.2.0 mod; pallet placement and release still need an in-game test.
