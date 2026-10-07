@@ -29,6 +29,11 @@ This is original mod lore, not official canon. Faction background: [PALA](https:
 
 `src/Apex6` contains the BepInEx plugin and embedded bundle. `Unity/Assets/Blueprinter/Mods/Apex-6` contains Blueprinter Editor assets; vanilla dependencies are not included.
 
-Build the DLL with `dotnet build src/Apex6/Apex-6.csproj -c Release -p:GameDir="path to Nuclear Option"`. After editing Unity assets, build a new `.nobp` and replace `src/Apex6/Bundle/Apex-6.nobp` before rebuilding the DLL.
+Build the DLL with `dotnet build src/Apex6/Apex-6.csproj -c Release -p:GameDir="path to Nuclear Option"`. After editing Unity assets, build a new `.nobp` and replace `src/Apex6/Bundle/Apex-6.nobp` before rebuilding the
+DLL.
+
+
+
+This project is an unofficial community modification and is not affiliated with, sponsored by, or endorsed by Shockfront Studios Pty Ltd. Original Nuclear Option assets, vehicle designs, audio, and code are Copyright (c) 2026 Shockfront Studios Pty Ltd. All rights reserved. Nuclear Option and Shockfront Studios are trademarks or registered trademarks of Shockfront Studios Pty Ltd. Original mod content and all other trademarks belong to their respective owners.
 
 The user tested ground and aircraft launches, pallet operation, and the revised upward launch behavior. The package passed Release compilation, Unity material checks, and embedded-resource hash verification. The final visual update and multiplayer behavior have not yet been verified in-game. See [CHANGELOG.md](CHANGELOG.md) for release details.
